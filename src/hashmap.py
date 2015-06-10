@@ -93,7 +93,7 @@ class HashMap(object):
 
     @staticmethod
     def _compute_hash(key, size):
-        return id(key) % size
+        return hash(key) % size
 
 
 def main():
