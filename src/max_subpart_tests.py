@@ -1,4 +1,5 @@
-from max_subpart import max_area_under_histogram, max_rectangle_in_sparse_matrix
+from max_subpart import max_area_under_histogram, max_rectangle_in_sparse_matrix, \
+	max_subarray
 
 
 def test_max_area_under_histogram():
@@ -57,9 +58,21 @@ def test_max_rectangle_in_sparse_matrix():
 		]) == 4
 
 
+def test_max_subarray():
+	assert max_subarray([]) == 0
+	assert max_subarray([0]) == 0
+	assert max_subarray([-1]) == 0
+	assert max_subarray([1]) == 1
+	assert max_subarray([1,2,3]) == 6
+	assert max_subarray([0,-2,1]) == 1
+	assert max_subarray([1,-2,0]) == 1
+	assert max_subarray([1,-2,3,1,-5,-2,3,2,-7,-3,4,0]) == 5
+
+
 def test_all():
 	test_max_area_under_histogram()
 	test_max_rectangle_in_sparse_matrix()
+	test_max_subarray()
 
 
 def main():

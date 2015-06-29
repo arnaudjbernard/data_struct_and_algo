@@ -87,7 +87,26 @@ def max_rectangle_in_sparse_matrix(matrix):
 
 
 def max_subarray(array):
-	pass
+	"""
+	In an array containing positive and negative integers, find the subarray which
+	sum is the biggest possible.
+
+	Relies on the fact that if the integral of a segment goes under zero, the biggest sum cannot
+	include this segment.
+
+	@return the value of the max subarray sum
+	"""
+	max_sum = 0
+
+	max_local_sum = 0
+	for i, value in enumerate(array):
+		max_local_sum += value
+		if max_local_sum < 0:
+			max_local_sum = 0
+		else:
+			max_sum = max(max_sum, max_local_sum)
+
+	return max_sum
 
 
 def max_submatrix(matrix):
