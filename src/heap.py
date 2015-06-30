@@ -52,20 +52,8 @@ class MinHeap(object):
 
 
 def main():
-    import random
-    heap = MinHeap()
-    nums = list(xrange(10))
-    random.shuffle(nums)
-    for n in nums:
-        heap.insert(n)
-
-    for n in xrange(10):
-        assert n == heap.pop()
-
-    heap.heapify(nums)
-
-    for n in xrange(10):
-        assert n == heap.pop()
+    from heap_test import test_all
+    test_all()
 
 
 if __name__ == "__main__":
