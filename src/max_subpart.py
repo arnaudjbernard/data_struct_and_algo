@@ -110,7 +110,27 @@ def max_subarray(array):
 
 
 def max_submatrix(matrix):
-	pass
+	"""
+	In an matrix containing positive and negative integers, find the submatrix which
+	sum is the biggest possible.
+
+	Iterate on all vertical ranges computing the max array on the running sum. The
+	running sum is computed similarily to the max rectangle in matrix.
+
+	@return the value of the max subarray sum
+	"""
+	max_sum = 0
+
+	for i in xrange(len(matrix)):
+		running_sum = [0] * len(matrix[0])
+		for j in xrange(i, len(matrix)):
+			# compute the running sum
+			for k in xrange(len(matrix[0])):
+				running_sum[k] += matrix[j][k]
+
+			max_sum = max(max_subarray(running_sum), max_sum)
+
+	return max_sum
 
 
 def main():
