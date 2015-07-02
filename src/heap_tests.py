@@ -9,7 +9,7 @@ class HeapTests(unittest.TestCase):
     def test_min_heap_sorting(self):
 
         # seed for consistant testing and reproductibility
-        for seed in range(10):
+        for seed in xrange(10):
             random.seed(seed)
 
             heap = MinHeap()

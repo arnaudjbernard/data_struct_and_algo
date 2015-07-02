@@ -7,7 +7,7 @@ def _partition(a, start, end, pivot_index):
     a[end], a[pivot_index] = a[pivot_index], a[end]
 
     pivot_index = start
-    for i in range(start, end):
+    for i in xrange(start, end):
         if a[i] < pivot:
             a[i], a[pivot_index] = a[pivot_index], a[i]
             pivot_index += 1

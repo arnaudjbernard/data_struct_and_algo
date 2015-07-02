@@ -47,7 +47,7 @@ class MinHeap(object):
 
     def heapify(self, other):
         self.array[1:] = other[:]
-        for i in range(len(self.array)/2, 0, -1):
+        for i in xrange(len(self.array)/2, 0, -1):
             self.down_heap(i)
 
 

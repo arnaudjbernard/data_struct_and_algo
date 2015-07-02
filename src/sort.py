@@ -108,16 +108,16 @@ def count_sort(arr, arr_len, exp, base):
     count = [0] * base
 
     # Store count of occurrences in count[]
-    for i in range(arr_len):
+    for i in xrange(arr_len):
         digit = (arr[i]/exp) % base
         count[digit] += 1
 
     # Change count[i] so that count[i] now contains actual position of this digit in output[]
-    for digit in range(1, base):
+    for digit in xrange(1, base):
         count[digit] += count[digit-1]
 
     # Build the output array
-    for i in range(arr_len - 1, -1, -1):
+    for i in xrange(arr_len - 1, -1, -1):
         digit = (arr[i]/exp) % base
         output[count[digit] - 1] = arr[i]
         count[digit] -= 1
@@ -182,7 +182,7 @@ def main():
     sort_functions = [insert_sort, bubble_sort, quick_sort, merge_sort, heap_sort, radix_sort]
 
     dic_times = {}
-    for i in range(0, 4):
+    for i in xrange(0, 4):
         size = 10 ** i
         sys.setrecursionlimit(size * 10)
 
@@ -216,4 +216,4 @@ if __name__ == "__main__":
     random.shuffle(shuffled_array)
     merge_sort2(shuffled_array)
     print shuffled_array
-    # main()
+    main()

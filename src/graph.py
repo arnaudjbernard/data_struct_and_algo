@@ -61,7 +61,7 @@ class Edge(object):
 
 
 def random_graph(vertex_count=10, edge_count=5, connected=True):
-    weights = range(1, 11)
+    weights = xrange(1, 11)
     import random
     graph = Graph()
     for i in xrange(vertex_count):

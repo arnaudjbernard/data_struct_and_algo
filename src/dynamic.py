@@ -4,9 +4,9 @@ def longest_common_subsequence_brute_force(str1, str2):
     best_len = 0
     best_sub = ""
 
-    for i in range(subsequence_count - 1, 0, -1):
+    for i in xrange(subsequence_count - 1, 0, -1):
         subsequence = ""
-        for bit_index in range(n):
+        for bit_index in xrange(n):
             bit_mask = 1 << bit_index
             if i & bit_mask:
                 subsequence += str1[bit_index]
