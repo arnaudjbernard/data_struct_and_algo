@@ -1,4 +1,5 @@
 import random
+import unittest
 
 
 def _partition(a, start, end, pivot_index):
@@ -34,7 +35,7 @@ def quick_select(a, n):
     """
     param a list
     param n int
-    return n smallest element of a
+    return nth smallest element of a
     """
     assert n >= 0
     assert n < len(a)
@@ -42,13 +43,18 @@ def quick_select(a, n):
     return _quick_select(a, 0, len(a) - 1, n)
 
 
+class QuickSelectTests(unittest.TestCase):
+    def test_range(self):
+
+        for i in xrange(100):
+            random_a = xrange(100) * 10
+            random.shuffle(random_a)
+            median = quick_select(random_a, i*10)
+            self.assertEqual(median, i)
+
+
 def main():
-    for i in range(100):
-        random_a = range(100) * 10
-        random.shuffle(random_a)
-        median = quick_select(random_a, i*10)
-        print median
-        assert median == i
+    unittest.main()
 
 
 if __name__ == '__main__':
