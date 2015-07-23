@@ -2,38 +2,58 @@ class MinHeap(object):
     """
     Min Binary Heap implementation.
     'A parent is always smaller than its children.'
+
     O(1) get min
     O(log(n)) insertion
     O(log(n)) remove min
+    O(n) construction
     """
     def __init__(self):
+        """
+        Create an empty min heap.
+        """
         super(MinHeap, self).__init__()
         # 1 based array
-        self.array = [0]
+        self.array = [None]
 
     def insert(self, value):
+        """
+        Insert value in the heap.
+        """
         self.array.append(value)
-        self.up_heap(len(self.array)-1)
+        self._up_heap(len(self.array)-1)
 
-    def up_heap(self, i):
+    def _up_heap(self, i):
+        """
+        Swap with parent if child is smaller and recurse on parent position.
+        """
         parent = i/2
         if i > 1 and self.array[parent] > self.array[i]:
             self.array[i], self.array[parent] = self.array[parent], self.array[i]
-            self.up_heap(parent)
+            self._up_heap(parent)
 
     def pop(self):
+        """
+        Remove the min element from the heap and return it.
+        """
         res = self.array[1]
 
         end = self.array.pop()
         if len(self.array) > 1:
             self.array[1] = end
-            self.down_heap(1)
+            self._down_heap(1)
         return res
 
     def peek(self):
+        """
+        Return the min element.
+        """
         return self.array[1]
 
-    def down_heap(self, i):
+    def _down_heap(self, i):
+        """
+        Take the two child, swap with the smallest and recurse on that position.
+        """
         left = 2 * i
         right = 2 * i + 1
         smallest = i
@@ -43,12 +63,16 @@ class MinHeap(object):
             smallest = right
         if smallest != i:
             self.array[i], self.array[smallest] = self.array[smallest], self.array[i]
-            self.down_heap(smallest)
+            self._down_heap(smallest)
 
     def heapify(self, other):
+        """
+        From a given array, build a min heap.
+        DownHeap all the non-leaf nodes.
+        """
         self.array[1:] = other[:]
         for i in xrange(len(self.array)/2, 0, -1):
-            self.down_heap(i)
+            self._down_heap(i)
 
 
 def main():

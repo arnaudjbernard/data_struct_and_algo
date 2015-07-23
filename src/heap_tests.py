@@ -13,17 +13,17 @@ class HeapTests(unittest.TestCase):
             random.seed(seed)
 
             heap = MinHeap()
-            nums = list(xrange(10))
-            random.shuffle(nums)
-            for n in nums:
+            shuffled_nums = [int(random.random() * 20 - 10) for _ in xrange(1000)]
+            nums = sorted(shuffled_nums)
+            for n in shuffled_nums:
                 heap.insert(n)
 
-            for n in xrange(10):
+            for n in nums:
                 self.assertEqual(n, heap.pop())
 
-            heap.heapify(nums)
+            heap.heapify(shuffled_nums)
 
-            for n in xrange(10):
+            for n in nums:
                 self.assertEqual(n, heap.pop())
 
 
