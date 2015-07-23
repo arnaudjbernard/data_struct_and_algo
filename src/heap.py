@@ -17,7 +17,7 @@ class MinHeap(object):
 
     def up_heap(self, i):
         parent = i/2
-        if i >= 1 and self.array[parent] > self.array[i]:
+        if i > 1 and self.array[parent] > self.array[i]:
             self.array[i], self.array[parent] = self.array[parent], self.array[i]
             self.up_heap(parent)
 
